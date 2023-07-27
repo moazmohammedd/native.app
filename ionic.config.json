@@ -1,0 +1,7 @@
+{
+  "name": "naitevApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
