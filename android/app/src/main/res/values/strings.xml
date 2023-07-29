@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Memories Saver</string>
+    <string name="title_activity_main">Memories Saver</string>
+    <string name="package_name">com.moaz.memoriesSaver</string>
+    <string name="custom_url_scheme">com.moaz.memoriesSaver</string>
+</resources>

@@ -2,8 +2,32 @@ import { IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonH
 import Header from '../components/Header';
 import { camera } from 'ionicons/icons';
 
+
+import { Plugin } from '@capacitor/core';
+import { Camera, CameraResultType , CameraSource} from '@capacitor/camera';
+
 const NewMemories: React.FC = () => {
   const photo = false;
+  const takePhoteHanlder = async () => {
+
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.Uri,
+      source : CameraSource.Camera,
+      width: 500
+    });
+    console.log(image)
+    // image.webPath will contain a path that can be set as an image src.
+    // You can access the original file using image.path, which can be
+    // passed to the Filesystem API to read the raw data of the image,
+    // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
+    var imageUrl = image.webPath;
+
+    // Can be set to the src of an image now
+    // imageElement.src = imageUrl;
+
+  }
   return (
     <IonPage>
       <Header title="New Memories">
@@ -42,7 +66,7 @@ const NewMemories: React.FC = () => {
                 }
               </div>
 
-              <IonButton fill='clear'>
+              <IonButton fill='clear' onClick={() => { takePhoteHanlder() }}>
                 <IonIcon icon={camera} slot="icon-only"></IonIcon>
                 <IonLabel>Take A Phote</IonLabel>
               </IonButton>
@@ -55,9 +79,9 @@ const NewMemories: React.FC = () => {
 
             <IonCol>
 
-                <IonButton>
-                  Add Phote
-                </IonButton>
+              <IonButton>
+                Add Phote
+              </IonButton>
 
             </IonCol>
 
